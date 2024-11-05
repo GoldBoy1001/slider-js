@@ -1,5 +1,7 @@
 import "../scss/style.scss";
 
+import bulletStyle from "./functions/BulletStyle.js";
+import paginationBtnActive from "./functions/paginationBtnActive.js";
 // =====================================
 document.addEventListener("DOMContentLoaded", function () {
   const prevButton = document.querySelector(".prev");
@@ -13,12 +15,15 @@ document.addEventListener("DOMContentLoaded", function () {
   let isAnimating = false; // Флаг, указывающий на выполнение анимации
   let autoSlideInterval;
 
+  paginationBtnActive();
+
   auto.addEventListener("click", () => {
     auto.classList.toggle("auto");
 
     const startAuto = () => {
       autoSlideInterval = setInterval(() => {
         currentSlide++;
+        bulletStyle(currentSlide);
         updateSlidesPosition();
       }, 3000);
     };
@@ -75,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!isAnimating) {
       currentSlide++;
+      bulletStyle(currentSlide);
       updateSlidesPosition();
     }
   }
@@ -85,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!isAnimating) {
       currentSlide--;
+      bulletStyle(currentSlide);
       updateSlidesPosition();
     }
   }
