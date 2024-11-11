@@ -2,6 +2,7 @@ import "../scss/style.scss";
 
 import bulletStyle from "./functions/BulletStyle.js";
 import paginationBtnActive from "./functions/paginationBtnActive.js";
+import stylePressingButton from "./functions/StylePressingButton.js";
 // =====================================
 document.addEventListener("DOMContentLoaded", function () {
   const prevButton = document.querySelector(".prev");
@@ -33,13 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
       : clearInterval(autoSlideInterval); // Остановка авто-слайдера
   });
 
-  function stylePressingButton(btn) {
-    btn.classList.add("no-shadow");
-    // Через небольшой таймаут восстанавливаем возможность тени при наведении
-    setTimeout(() => {
-      btn.classList.remove("no-shadow");
-    }, 200); // 200ms — время, в течение которого тень не будет отображаться
-  }
   // Инициализация начальной позиции слайдов
   function initSlidesPosition() {
     slidesContainer.style.transition = "none";
